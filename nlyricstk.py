@@ -24,7 +24,7 @@ def run(fn, *inputfile):
                              w is not ")" and
                              w is not '"')]
 
-    print("Got input file, now generating a song...")
+    print("> Got input file, now generating a song...")
     # 4-gram
     gram_size = 3
     ngram = list(zip(*[huge_list[i:] for i in range(gram_size)]))
@@ -55,10 +55,9 @@ def run(fn, *inputfile):
             break
     print(song)
     # tts
-    """
-    tts = gTTS(text=result.content,lang='en')
-    tts.save(result.title + '.mp3')
-    """
+    print("> Making " + fn)
+    tts = gTTS(text=song,lang='en')
+    tts.save(fn)
 
 if __name__ == '__main__':
     if len(sys.argv) >= 2:
